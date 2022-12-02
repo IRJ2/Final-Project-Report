@@ -1,0 +1,787 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=35mm,
+ }
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{blindtext}
+\usepackage{breqn}
+\usepackage{color}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage{cancel}
+\usepackage[english]{babel}
+\usepackage[euler]{textgreek}
+\usepackage{fancyhdr,lipsum}
+\usepackage{fixltx2e}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage[labelfont=bf, margin=1cm]{caption}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{nameref}
+\usepackage[noend]{algpseudocode}
+\usepackage{ragged2e}
+\usepackage{sectsty}
+\usepackage{tabu}
+\usepackage{tcolorbox}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{subfig}
+\usepackage[headsep=1cm,headheight=15pt]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usetikzlibrary{calc}
+\graphicspath{ {images/} }
+
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+\renewcommand*{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+
+\newcommand\HRule{\rule{\textwidth}{1pt}}
+
+
+
+\chapterfont{\centering}
+
+
+
+
+\titlespacing*{\chapter}{0pt}{-70pt}{20pt}
+
+
+
+
+\makeatletter
+\newcommand{\algmargin}{\the\ALG@thistlm}
+\makeatother
+\newlength{\whilewidth}
+\settowidth{\whilewidth}{\algorithmicwhile\ }
+\algdef{SE}[parWHILE]{parWhile}{EndparWhile}[1]
+  {\parbox[t]{\dimexpr\linewidth-\algmargin}{%
+     \hangindent\whilewidth\strut\algorithmicwhile\ #1\ \algorithmicdo\strut}}{\algorithmicend\ \algorithmicwhile}%
+
+\algnewcommand{\parState}[1]{\State%
+  \parbox[t]{\dimexpr\linewidth-\algmargin}{\strut #1\strut}}
+
+\newlength\myindent
+\setlength\myindent{2em}
+\newcommand\bindent{%
+  \begingroup
+  \setlength{\itemindent}{\myindent}
+  \addtolength{\algorithmicindent}{\myindent}
+}
+\newcommand\eindent{\endgroup}
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{red}{rgb}{0.8,0,0}
+\lstset{frame=tb,
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,       
+  numbersep=5pt,        
+  numberstyle=\tiny\color{gray},  
+  stepnumber=1,                   
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{red},
+  breaklines=true,
+  breakatwhitespace=true,
+  breakindent=50pt,
+  tabsize=4
+}
+
+\renewcommand\chaptermark[1]{\markboth{#1}{}} 
+%Line spacing
+\renewcommand{\baselinestretch}{1.5}
+\begin{document}
+\begin{titlepage} 
+  
+\begin{center} 
+\vspace*{-1cm} 
+{\Large \bfseries IMAGE TO IMAGE TRANSLATION IN VIDEO CALL} \\[2mm] 
+{\fontsize{5mm}{1mm}  A PROJECT REPORT } \\[3mm] 
+{\large  submitted by} \\[4mm] 
+{\fontsize{5mm}{1mm}\Large \bfseries  } \\[2mm] 
+    {\normalsize \textbf{ ANAGHA V}} \small{\textbf{(PKD17IT009)}}  \\
+    {\normalsize \textbf{ SAIKRISHNAN C}} \small{\textbf{(PKD17IT047)}} \\
+    {\normalsize \textbf{SHREE RAM UNNI}} \small{\textbf{(PKD17IT052)}}  \\ 
+    {\normalsize \textbf{VRINDA T K }} \small{\textbf{(PKD17IT061)}}  \\[6mm] 
+{\large  to } \\[3mm] 
+{\large  the APJ Abdul Kalam Technological University} \\[2mm] 
+{\large  in partial fulﬁlment of the requirements for the award of the Degree} \\[2mm] 
+{\large  of } \\[3mm] 
+{\fontsize{5mm}{1mm} \textit {Bachelor of Technology} } \\[2mm] 
+{\large  \textit{in} } \\[2mm] 
+{\fontsize{5mm}{1mm} \textit {Information Technology} } \\[2mm] 
+\begin{figure}[ht!] 
+    \centering 
+    \includegraphics[width=30cm,height=5cm,keepaspectratio]{1.jpg} 
+\end{figure} 
+{\large \bfseries Department Of Information Technology} \\[2mm] 
+{\large \bfseries Government Engineering College Palakkad} \\[2mm] 
+{\large \bfseries Sreekrishnapuram, Palakkad - 678633} \\[2mm] 
+{\large June 2021} \\[4.5mm] 
+\end{center} 
+\pagebreak 
+\end{titlepage} 
+\newpage
+\pagebreak
+\begin{titlepage}
+\begin{center} 
+\vspace*{-1cm} 
+{\Large \bfseries IMAGE TO IMAGE TRANSLATION IN VIDEO CALL} \\[2mm] 
+{\fontsize{5mm}{1mm}  A PROJECT REPORT } \\[3mm] 
+{\large  submitted by} \\[4mm] 
+{\fontsize{5mm}{1mm}\Large \bfseries  } \\[2mm] 
+    {\normalsize \textbf{ ANAGHA V}} \small{\textbf{(PKD17IT009)}}  \\
+    {\normalsize \textbf{ SAIKRISHNAN C}} \small{\textbf{(PKD17IT047)}} \\
+    {\normalsize \textbf{SHREE RAM UNNI}} \small{\textbf{(PKD17IT052)}}  \\ 
+    {\normalsize \textbf{VRINDA T K }} \small{\textbf{(PKD17IT061)}}  \\[6mm] 
+{\large  to } \\[3mm] 
+{\large  the APJ Abdul Kalam Technological University} \\[2mm] 
+{\large  in partial fulﬁlment of the requirements for the award of the Degree} \\[2mm] 
+{\large  of } \\[3mm] 
+{\fontsize{5mm}{1mm} \textit {Bachelor of Technology} } \\[2mm] 
+{\large  \textit{in} } \\[2mm] 
+{\fontsize{5mm}{1mm} \textit {Information Technology} } \\[2mm] 
+\begin{figure}[ht!] 
+    \centering 
+    \includegraphics[width=30cm,height=5cm,keepaspectratio]{1.jpg} 
+\end{figure} 
+{\large \bfseries Department Of Information Technology} \\[2mm] 
+{\large \bfseries Government Engineering College Palakkad} \\[2mm] 
+{\large \bfseries Sreekrishnapuram, Palakkad - 678633} \\[2mm] 
+{\large June 2021} \\[4.5mm] 
+\end{center} 
+    
+ \pagebreak   
+
+\begin{center}
+	\vspace*{0.1cm}
+	\textcolor{black}{\Large \bfseries DECLARATION} \\[7mm]
+\justify{\large{ We hereby declare that the project report entitled  \textbf{\large {\textquotedblleft  Image to image translation in video call\textquotedblright}} submitted by us to APJ Abdul Kalam  Technological University during the academic year 2020 - 2021 in partial fulfillment of the requirements for the award of Degree of Bachelor of Technology in Information Technology is a record of bonafide project carried out by us under the guidance and supervision of\textbf{ Ms. Silpa Sangeeth L R}. We further declare that the work reported in this project has not been submitted and will not be submitted, either in part or in full, for the award of any other degree or diploma in this institute or any other institute or university. } \\[4.5cm]}	
+\begin{multicols}{2}
+\flushleft{
+
+\textcolor{black}{\large  {Place : Sreekrishnapuram}}\\[5mm]
+\textcolor{black}{\large  {Date : 10 June 2021}}\\[5mm]
+\columnbreak
+
+\flushleft{
+\textcolor{black}{\large  {\hspace{30pt}Anagha V(PKD17IT009)}}\\[3mm]
+\textcolor{black}{\large  {\hspace{30pt}Saikrishnan C(PKD17IT047)}}\\[3mm]
+\textcolor{black}{\large  {\hspace{30pt}Shreeram Unni(PKD17IT052)}}\\[3mm]
+\textcolor{black}{\large  {\hspace{30pt}Vrinda T K (PKD17IT061)}}\\[3mm]
+}
+\end{multicols}
+\end{center}
+
+\end{titlepage}	
+
+
+\newpage
+\pagebreak
+
+\begin{titlepage}
+	
+
+\begin{center}
+	\vspace*{-1,5cm}
+	\textcolor{black}{\Large \bfseries DEPARTMENT OF INFORMATION TECHNOLOGY} \\[3mm]
+	\textcolor{black}{\Large \bfseries GOVERNMENT ENGINEERING COLLEGE} \\[3mm]
+		\textcolor{black}{\Large \textbf{ SREEKRISHNAPURAM, PALAKKAD}}\\[3mm]
+	\begin{figure}[ht!]
+    	\centering
+    	\includegraphics[width=40cm,height=5.5cm,keepaspectratio]{1.jpg}
+	\end{figure}
+\textcolor{black}{\Large  \textbf{CERTIFICATE}}\\[3mm]
+\justify{\large{This is to certify that the report entitled \textbf{ \textquotedblleft  \Large Image To Image Translation In Video Call\hspace{-1mm} \textquotedblright} submitted by \textbf{\large Anagha V(PKD17IT009), Saikrishnan C(PKD17IT047),Shreeram Unni(PKD17IT052) and Vrinda T K(PKD17IT061)} to the APJ Abdul Kalam Technological University in partial fulfillment of the requirements for the award of the Degree of Bachelor of Technology in Information Technology is a  bonafide record of the project work carried out by them under our guidance and supervision. This report in any form has not been submitted to any other Universities or Institute for any  purpose.}\\[1.5cm]}
+\begin{multicols}{2}
+\flushleft{
+\textcolor{black}{\large  {GUIDE}}\\[.25mm]
+{\large {Ms. SILPA SANGEETH L R}}\\[.25mm]
+{\large {Asst. Professor}}\\[.25mm]
+{\large {Dept. of Information Technology}}\\[0.25mm]}
+\columnbreak
+
+\flushleft{
+\textcolor{black}{\large  {\hspace{7pt}HEAD OF THE DEPARTMENT}}\\[.25mm]
+{\large {\hspace{7pt}Dr. REMESH BABU K R }}\\[.25mm]
+{\large {\hspace{7pt}Assoc. Professor }}\\[.25mm]
+{\large {\hspace{7pt}Dept. of Information Technology}}\\[0.5mm]
+}
+\end{multicols}
+\end{center}
+
+
+
+\end{titlepage}
+
+\newpage
+\pagenumbering{roman}
+\chapter*{ACKNOWLEDGEMENT} \vspace{2pt}
+\markboth{ACKNOWLEDGEMENT}{ACKNOWLEDGEMENT}
+
+\addcontentsline{toc}{chapter}{\numberline{} ACKNOWLEDGEMENT}%
+\justify
+{\large {Many noble hearts contributed immense inspiration and support for the successful completion of the project preliminary works. We are unable to express my gratitude in words to such individuals.\\\\
+First of all, we would like to thank \textbf{The Almighty God}, for granting us the strength, courage and knowledge to complete this project successfully. We would like to express our deep regard to\textbf{ Dr. P. C. Reghu Raj}, Principal, Government Engineering College, Palakkad, for providing facilities throughout the design of our project.\\\\
+We take this opportunity to express our profound gratitude to\textbf{ Dr. K.R. Remesh Babu}, Head of the Department, Department of Information Technology, Government Engineering College, Palakkad, for providing permission and availing all required facilities for undertaking the project in a systematic way. We are extremely grateful to \textbf{Ms. Silpa Sangeeth L R}, Internal Guide, Assistant Professor, Department of Information Technology, Government Engineering College, Palakkad, who guided us with her kind, ordinal and valuable suggestions. We pay our deep sense of gratitude to \textbf{Ms. Sangeetha U.} and \textbf{Mr. Ebey S. Raj}, Project Coordinators, Department of Information Technology, Government Engineering College, Palakkad, for their valuable guidance, keen interest and encouragement at various stages of the project. We would also like to thank all the\textbf{ teaching and non-teaching staff} of Department of Information Technology, Government Engineering College, Palakkad, for the sincere directions imparted and the cooperation in connection with the project.\\\\
+We will be failing in duty if we do not acknowledge with grateful thanks to the authors of the references and other literatures referred in this project.\\\\
+We are also thankful to our parents for the overwhelming support given by them for the project. Last, but not the least, we take pleasant privilege in expressing our heartful thanks to our friends who were of precious help in completing this project.
+ }}
+\chapter*{ABSTRACT} \vspace{8pt}
+\markboth{ABSTRACT}{ABSTRACT}
+
+\addcontentsline{toc}{chapter}{\numberline{} ABSTRACT}%
+
+\justify
+
+{\large{Conditional adversarial networks can be used as a
+general-purpose solution to non labeled image-to-image translation
+problems, where image is not identified as objects. These networks not only learn the mapping from input image to output image, but also learn a loss function to train this mapping. This makes it possible to apply
+the same generic approach to problems that traditionally
+would require very difficult loss formulations and large image datasets. This project demonstrates that this approach of using adversarial networks is effective at synthesizing images 
+from label maps and reconstructing objects to a latent space maps, among other tasks. It has phenomenally 
+demonstrated its wide applicability and ease of adoption
+without the need for parameter tweaking in to a video output by producing it frame by frame. This project suggests that reasonable results can be achieved
+without hand-engineering of loss functions in an adversarial network manually.}
+
+}
+
+\newpage
+\listoffigures
+\addcontentsline{toc}{chapter}{\numberline{}LIST OF FIGURES}
+\newpage
+\chapter*{ABBREVIATIONS} \vspace{8pt}
+\markboth{ABBREVIATIONS}{ABBREVIATIONS}
+
+\addcontentsline{toc}{chapter}{\numberline{}ABBREVIATIONS}%
+
+
+\large{{ \hspace{40mm}  \\
+ \hspace{20mm} GAN \hspace{39mm} General Adversarial Network \\
+ \hspace{20mm} CNN \hspace{39mm} Convolution Neural Networks \\
+ \hspace{20mm} GPU \hspace{39mm} Graphics Processing Unit \\
+ \hspace{20mm} UML \hspace{39mm} Unified Modeling Language \\
+ \hspace{20mm} OPENCV \hspace{29mm} Open Source Computer Vision Library \\
+ \hspace{20mm} FFHQ \hspace{37mm} Flickr-Faces-HQ\\
+}}
+
+\chapter{INTRODUCTION}
+\pagenumbering{arabic}
+\justify \large{In today's era of technology, video conferencing has become a staple for communication between people who are living in different parts of world. So it has become very much easier to have access to livelihood of other people through a web camera. Since we require a large bandwidth to transmit video data in high definition, it is easier to use other modes of communication where the requirement of data is much less. Another issue with video conferencing is the privacy of a person to communicate with a stranger as a facial data of a person could be mapped from video conferencing. So anonymity of a person is always a question that people have towards using this mode of communication. So the solution to this scenario that people face today can be resolved using traditional methods of neural networks such as Convolution Neural Networks(CNN), which can augment video input of the user by identifying the facial object and segment by running it through large image dataset. 
+With the traditional neural networks such as CNN, there is a higher computation requirement to run over these large label maps which are defined during its training of CNN models, which can create a latency in video throughout video conferencing. The adversarial networks are a new form of neural networks that are designed to understand the facial latent space  for non labeled image data set and reconstruct those video input into the desired augmentation in real time.}
+\section{SCOPE AND OBJECTIVE}
+\justify \large{ To read the real time video input of the user and generate a custom facial video mapped to that input with negligible inference time.\\
+   To exploit general adversarial networks and generate the semi realistic facial images from the frames of video and map them to the facial movements of the person in the video input.}
+\section{ PROBLEM STATEMENT}
+\justify \large{The proposed adversarial network for this project is an image to image translation[1] for the video input with facial maps and reconstructing objects to a latent space maps in real time.
+  }
+
+
+
+
+
+
+\chapter{LITERATURE SURVEY}
+\section{DEEP NEURAL NETWORK CONCEPTS FOR IMAGE TRANSLATION}
+\justify {\large{Thierry Bouwmans et al.[2] uses conventional neural networks which have been demonstrated to be a powerful framework for background subtraction in video acquired by
+static cameras. Convolutional neural
+networks, which are used in deep learning, have been recently and excessively employed for background initialization, foreground
+detection, and deep learned features. The top background subtraction methods currently used in CDnet 2014 are based on deep
+neural networks, and have demonstrated a large performance improvement in comparison to conventional unsupervised approaches
+based on multi-feature or multi-cue strategies. This paper discusses deep neural network concepts in background subtraction for novices and experts to provide further directions. To do so, we first surveyed the background initialization and background subtraction methods based on deep neural networks concepts, and also deep learned  features.
+}}}
+
+\justify {\large {M. Babaee et al.[3] proposes a novel background subtraction system that uses a deep Convolutional Neural Network (CNN) to perform the segmentation. With this approach, feature engineering
+and parameter tuning become unnecessary since the network parameters can be learned from data by training a single CNN that can handle various video scenes. It also utilises spatial-median filtering as the post processing of the network outputs. The method evaluates with different data-sets, and the
+network outperforms the existing algorithms with respect to the average ranking over different evaluation metrics. Furthermore, due to the network architecture, the CNN is capable of real time processing but takes large amount of computational complexity.
+}}
+\justify {\large{Ian J. Goodfellow et al.[4] proposes a new framework for estimating generative models via an adversarial process, in which they simultaneously train two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G. The generative model is pitted against an adversary: a discriminative model that learns to determine whether a sample is from the model distribution or the data distribution. The generative model can be thought of as analogous to a team of counterfeiters, trying to produce fake currency and use it without detection, while the discriminative model is analogous to the police, trying to detect the counterfeit currency. Competition in this game drives both teams to improve their methods until the counterfeits are indistinguishable from the genuine articles. In this case, both models are using only the highly successful back propagation and dropout algorithms and sample from the generative model using only forward propagation.
+}}
+
+
+\section {EXISTING SEMANTICS BY NEURAL NETWOR-    KS FOR IMAGE AND VIDEO TRANSLATION}
+\justify {\large{Traditional views of blur such as reduction in energy at high frequencies and loss of phase coherence at
+localized features have fundamental limitations, hence resorting to deep
+neural networks that are proficient at learning high-level features
+and propose the first end-to-end local blur mapping algorithm
+based on a fully convolutional network [5]. By analyzing various
+architectures with different depths and design philosophies,it is
+empirically shown that high-level features of deeper layers play a
+more important role than low-level features of shallower layers
+in resolving challenging ambiguities for this image de-blurring task. With more advanced
+directed acyclic graph based architectures that combine
+low-level spatial and high-level semantic information but yield
+no substantial improvement, which again verify the critical
+role of high-level semantics in this task. Due to the limited
+number of training samples, it is required to initialize all networks with
+weights pre-trained on the semantic segmentation task that contain rich high-level information about what an input image constitutes.
+}}
+
+\justify {\large{James Ren Hou Lee et al.[6] proposes a novel deep time windowed convolutional neural network design (TimeConvNets) for the purpose of real time video facial expression recognition. More specifically,
+exploring an efficient convolutional deep neural network design
+for spatiotemporal encoding of time windowed video frame subsequences and study the respective balance between speed and accuracy. The datasets here are called BigFaceX, composed of a modified aggregation of the extended CohnKanade (CK+), BAUM-1, and the eNTERFACE public datasets. Different variants of the proposed TimeConvNet design with different backbone network architectures are evaluated using BigFaceX alongside other network designs for capturing spatiotemporal information, and experimental results demonstrate that TimeConvNets can better capture the transient nuances
+of facial expressions and boost classification accuracy while
+maintaining a low inference time. The above design grants understanding
+of current emotional states and also allows the user to
+recognize conversational cues such as level of interest,
+speaking turns, and level of information understanding
+}}
+
+\justify {\large{ Next-frame prediction[7], that is, predicting what happens next in the form of an image or a few images, is an emerging field of computer vision and deep learning. This prediction
+is built on the understanding of the information in the historical images that have occurred so far. It refers to starting from continuous, unlabeled video frames and constructing a network that can accurately generate subsequent frames. The input of the network is the previous few frames, and
+prediction is/are the next frame(s). These predictions can be used for both human and object motions with background in the images.
+}}
+
+
+
+\pagebreak
+
+\chapter{PROPOSED SYSTEM}\vspace{4pt} 
+\section{PROPOSED SYSTEM}
+\justify {\large{ The proposed system reads the real time video input of the user, using adversarial networks and generates the custom facial video mapped to that input with negligible inference time.}
+\subsection{Features of proposed system}
+\begin{itemize}
+\item {The system exploits general adversarial network on facial features in a non labelled manner of input to generate semi realistic images. }
+\item {The generated image is mapped to facial landmarks in the facial image from video input.}
+\item {The system output will be semi realistic facial frames predicting facial expression from video input in real time.
+}}
+\end{itemize}
+\newpage
+\section{NEED FOR PROPOSED SYSTEM}
+\justify {\large{With the traditional neural networks such as CNN, there is a higher computation requirement to run over these large label maps which are defined during its training of CNN models, which can create a latency in video throughout video conferencing. The adversarial networks are a new form of neural networks that are designed to understand the facial latent space  for non labeled image data set and reconstruct those video input into the desired augmentation in real time. }}
+\subsection{Generative Adversarial Network}
+\begin{figure}
+\vspace{5mm} 
+ \centering
+\includegraphics[width=15cm,height=15.5cm,keepaspectratio]{gan.png}\\\\
+ \caption{{GAN}\textsubscript{[21]}} \\
+   \end{figure}
+\justify {\large{GANs are new proposed models and they consist of two neural
+networks: generator G, takes noise variables as input to generate new data instances and discriminator D, decides whether
+each instance of data belongs to the actual training data set
+or not. D and G play a two-player minimax game with the
+objective function as}}
+\begin{equation}
+       L_{GAN}= E_{px}[log[D(x)]+E_{pz}[log[1-D(G(z))]
+        \end{equation}\\
+        \hspace{0.3cm}where,
+        \begin{itemize}
+            \item $L$ is the loss function,
+            \item E is the empirical estimation,
+            \item x is the training data with the true data distribution,
+            \item z represents the noise variable sampled from distribution,
+            \item G(z) represents the generated data instances.\\
+        \end{itemize}
+
+\justify {\large{GANs as shown in figure 3.1
+learn a loss that tries to classify if the output image is real
+or fake, while simultaneously training a generative model
+to minimize this loss. Blurry images will not be tolerated
+since they look obviously fake. As GANs , learn a loss
+that adapts to the data, they can be applied to a multitude of
+tasks that traditionally would require very different kinds of
+loss functions[3].}}
+\subsection{Conditional GAN}
+\justify {\large{In Conditional GANs, a conditional setting is applied, meaning that both the generator and discriminator are conditioned on some sort of auxiliary information (such as class labels or data) from other modalities. As a result, the ideal model can learn multi-modal mapping from inputs to outputs by being fed with different contextual information. This makes Conditional GANs suitable for image-to-image translation[1] tasks, where we condition on an input image and generate a corresponding output image.\\\\
+These networks learn the mapping from input image to output image and learn a loss function to train this mapping. This makes it possible to apply the same generic approach to problems that traditionally would require very different loss formulations.
+}}
+\section{FEASIBILITY STUDY}
+\subsection{Technical Feasibility}
+\justify \large{The prier works in this field have been based on construction methodology in which individual
+facial features ( eyes, nose, mouth, eyebrows,etc.) are selected one at a time from a large
+database and then electronically overlaid to make the composite image. Generative adversarial
+network is used successfully in this field to develop the images of animals, birds and buildings
+now. However, it’s use is still in progress in the case of human facial texturing.
+Technical feasibility of the project was analysed and grouped into hardware feasibility and
+software feasibility.}
+
+\subsection{Financial Feasibility}
+\justify This feasibility study looks at how a certain proposal can work in a long-term basis or endure financial risks that may come. It is also helpful in recognizing potential cash flow. Another important purpose is that it helps planners focus on the project budget and narrow down the possibilities.
+\subsubsection{Development Cost}
+\justify {\large{For developing the system no particular cost is required. But devices are needed to demonstrate its working. The only cost required is the cost of devices needed for demonstration of
+the working of the system.}
+
+\subsubsection{Installation Cost}
+\justify {\large{No particular installation cost is needed.}}
+
+\subsubsection{Maintenance Cost}
+\justify {\large{As with the operational cost, maintenance is required mainly for the server. So the cost of
+server contributes to the maintenance cost as well. Both the operational and maintenance cost
+is found to be feasible after the study.
+}
+
+\subsection{Requirement analysis}
+\justify {\large{Requirement analysis and validation is a process of refinement, modelling and specification of
+the already discovered user requirements. The systematic use of proven principles, techniques,
+languages and tools for the cost effective analysis, documentation and on-going evolution of
+user needs and the specification of external behaviour of the system to satisfy those user needs
+form an integral part of this stage of software development. This chapter describes the method
+of requirement elicitation employed and the user requirements thus gathered. The requirements
+are also finalized after validation using a facial feature extraction from video input.}
+}
+
+
+\subsection{Product Functionality}
+\item Motive of the project is to build an application capable of interfacing semi realistic human face from the human face in video input using GAN, thereby generating semi realistic images of the person automatically. From specific featuring of face from video frames, the GAN will texture the facial composition uniquely.
+\subsection{Users and Characteristics}
+\item People who need to sketch the image of face from video input into semi realistic counterpart in real time without involving artistic skill is an example of targeted users.
+
+\subsection{External Interface Requirements}
+\item \textbf{User Interfaces}
+\item The project consists of a single user interface for any user accessing the system. The
+interface of the system will allow the user to input the features of their face as video input through the system's platform. The input will include
+the detailing of facial features and expressions. Once the input is captured , the
+product will provide the user the semi realistic video translation of the user in a video conferencing applications.
+
+\item \textbf{Hardware Interfaces}
+\item The product supports hardware systems such as PC with intel i3 processor or higher, laptops
+and mobile phones.
+
+\item \textbf{Software Interfaces}
+\item The product uses software components such as pytorch (Deeplearning), facemesh (UV mapping
+library for computer vision), Google Colab (Cloud platform) and other data science python libraries and modules like numpy, torchvision, matplotlib, opencv.
+
+\subsection{Functional Requirement}
+\item {Functional requirements will analyse the services provided to the users by
+the product. It will have the following phases:
+\item \textbf{Preprocessing:} Input video and training data set handling. Feature includes feeding
+the real time input to the GAN to provide the image output after computation.
+\item \textbf{Image Generation:} Generating images from input vectors, discriminating images from
+real images and finally creating an accurate predictive image.
+\item \textbf{UV mapping:} UV mapping is the 3D modeling process of projecting a semi realistic image to a video input facial model's surface for texture mapping.
+\item \textbf{User Interface:} It is presented for the view of end system through video conferencing app  designed for input as frame image and output mapped to generated semi realistic image.
+
+
+\subsection{Performance Requirements}
+\item The main performance requirements that the product should satisfy are,
+\item \textbf{Speed:-} There should be some means of method to get high accuracy in generated images from
+video frame input with less computation time.
+\item \textbf{Resource usage:-} The system should use only a limited amount of individual system resources.
+\item \textbf{Accuracy :-} The accuracy of the intended output also adds to the performance constraints.
+The accuracy constraint refers to the similarity in image features and input features.
+}}
+\pagebreak
+
+
+\chapter{SYSTEM DESIGN}\vspace{4pt} 
+\justify{\large{This chapter provides a high level overview of our software design as well
+as detailed design description of some major components of our system. The chapter also discusses
+ how the software system will be structured to satisfy the requirements. It is
+the primary reference for code development and, therefore, it contains all the information
+required by a programmer to write code. The chapter is commanded to give a fairly complete
+description, while maintaining a high-level view of the software.}}
+
+
+
+\section{SYSTEM ARCHITECTURE}
+\subsection{Introduction}
+\item The architecture design process is concerned with establishing a basic structural framework
+for a system. It involves identifying the major components of the system and communications
+between these components. Large systems are always decomposed into sub systems that provide some related set of services. The initial design process of identifying these subsystems
+and establishing a framework for subsystem control and communication is called architecture
+design as shown in figure 4.1 and the output of this design process is a description of the software architecture.
+\item The components of system design are as follows :
+\subsection{Face Detection}
+\item The face of a person is an extraction of frame by frame images from a video input. Hence the face land marks are detected in video ram images and running libraries over the given video frame input. The image extracted are prepossessed and filtered, and are forwarded to face segmentation, where the libraries that detect the facial landmarks will do face detection of that person. 
+\subsection{Generator}
+\item The generator part of a GAN learns to create fake data by incorporating feedback from the discriminator. It learns to make the discriminator classify its output as real. Generator will arbitrarily generate a face based input and GAN
+dataset for semi-realistic images.
+The generator output will be fed to discriminator and it gives an
+opinion for comparison.
+\begin{figure}
+\vspace{5mm} 
+ \centering
+\includegraphics[]{arch.jpg}}\\\\
+\caption{System Architecture}\\
+   \end{figure}
+\subsection{Discriminator}
+\item The discriminator's comparison is based on the target image that is  compared against a a reference image taken from a semi realistic dataset. The impact of a generator weights depends on the impact of the improvised discriminator weights which is fed into optimizer. So back propagation starts at the output and flows back through the discriminator into the generator through optimizer. If the decision is not favourable,then the image is optimized with new weights and generator again generates an image. Trying to hit a moving target would make a hard problem even harder for the generator, so the system is provided with segmented facial image from video input.
+
+\subsection{UV Mapping}    
+\item UV mapping is the 3D modeling process of projecting a 2D image
+to a 3D model’s surface for texture mapping.
+Once mapping is achieved the expressions in video input will be
+translated into generated image output in real time.
+\section{SYSTEM DESIGN}
+\justify{\large{This section defines the structure, behaviour, and views of the system. A formal description
+and representation of a system, organized in a way that supports reasoning about the structures
+of the system are provided. A system architecture comprises of system components, the externally
+visible properties of those components, the relationships (e.g. the behaviour) between them.
+It provides a plan from which products can be procured, and systems developed, that will work
+together to implement the overall functionalities.}
+\newpage
+\subsection{Objectives}
+\justify{\large{The project design objectives are stated as follows:-}
+\begin{itemize}
+    \item Face detection for a following video frame input using facial landmarks for a person.
+    \item Face segmentation for further prepossessing required for GAN model.
+    \item Semi -realistic facial image generation from the previous segmented image using GAN model.
+    \item UV mapping of generated facial image to the facial landmarks detected in the video input.
+\end{itemize}
+}}}}}}}}}}}
+\subsection{Use Case Diagram}
+\item A use case defines a goal-oriented set of interactions between external actors and the system under consideration as shown in figure 4.2.
+\pagebreak
+\begin{figure}
+\vspace{5mm} 
+ \centering
+\includegraphics[width=15cm,height=15.5cm,keepaspectratio]{usecase.png}}
+\caption{Use case Diagram}\\
+   \end{figure}
+\subsection{Deployment Diagram} 
+\item A deployment diagram is a UML diagram type that shows the execution architecture of a system, including nodes such as hardware or software execution environments, and the middleware connecting them as shown in figure 4.3. Deployment diagrams help model the hardware topology of a system compared to other UML diagram types which mostly outline the logical components of a system. Deployment diagrams are typically used to visualize the physical hardware and software of a system.
+\pagebreak
+\begin{figure}
+\vspace{5mm} 
+ \centering
+\includegraphics[width=15cm,height=15.5cm,keepaspectratio]{deploymnet1.jpg}}\\\\
+\caption{Deployment Diagram}\\
+   \end{figure}
+
+
+\subsection{Activity Diagram}
+\item An activity diagram portrays the control flow from a start point to a finish point showing the various decision paths that exist while the activity is being executed as shown in figure 4.4. We can depict both sequential processing and concurrent processing of activities using an activity diagram. They are used in business and process modelling where their primary use is to depict the dynamic aspects of a system.
+\pagebreak
+\begin{figure}
+\vspace{5mm} 
+ \centering
+\includegraphics[width=15cm,height=15.5cm,keepaspectratio]{activity_diagram.jpeg}}\\\\
+\caption{Activity Diagram}\\
+   \end{figure}
+
+\subsection{Detailed Design}
+\subsubsection{Module 1}
+\item Module 1 is the face detection module which has the extracted facial images from the video input, and these images would be prepossessed and filtered through face detection support libraries. Face detection of the processed image is done through HARR classifiers which will find facial landmarks and segment facial data out of the video frame image that has be pipelined through these processes. Output image at the end of the pipelined face that further forwarded to the next module.
+
+\subsubsection{Module 2}
+\item Module 2 is the face generation module to  generate semi-realistic image from the face segmented images obtained from the previous module. The GAN model comprises of two Neural Networks which are trained simultaneously in an adversarial
+process where the generator seeks to better deceive the
+discriminator and the discriminator seeks to better identify the
+counterfeit images.
+The generator is trained via adversarial loss, which encourages the
+generator to generate plausible images in the target domain.
+The generation of the output image is conditioned on a face segmented images from input video, source image. The discriminator is provided both with a source image and the
+target image and must determine whether the target is a plausible
+transformation of the source image. It also comprises of a generator model for new synthetic images, and a discriminator model that classifies images as real (from the
+datasets) or fake (generated). Once the optimal semi realistic image is generated, it will pass it to the next module in the pipeline.
+
+\subsubsection{Module 3}
+\item Module 3 is the UV mapping module which is basically the 3D modeling process of projecting a 2D image to a 3D model’s surface for texture mapping. In the context of this system design the semi realistic image is the texture map that needs to be mapped to the 3D model of the person in the video input. To achieve this process we integrate GAN model prediction of facial texture and support libraries of face mesh that will project the facial landmarks with the mesh points to generate  facial expression in real time.  
+
+\subsection{Process Model}
+\justify{\large{ After a detailed study of different models, Waterfall model is selected for the project. A successful model must capture every critical aspect of the decision, more complex decisions typically require more sophisticated models, so as to correctly deal with risk and uncertainty. In our project, linking the product with the customer who has taken from the rack is very complex. There is possibility of misconception. Keeping this reality, we examined a range of models, and discovered that the Waterfall model is the best to move forward.}
+
+\justify {\large{As we cannot try many ways for the linking process, since it is a step by step process of  project development . New changes cannot be implemented, so no freedom for changing the step by step process is very essential. The developer needs to  work for continuous schedule of days and cannot roll back once implemented as it affects the previous step that has been completed. Hence,  it requires proper planning before the project gets started, which is  one of the key factor of waterfall model.
+}}
+
+\subsubsection{Model Description-Waterfall Model}
+\justify {\large{The waterfall model is a breakdown of project activities into linear sequential phases, where each phase depends on the deliverables of the previous one and corresponds to a specialisation of tasks. The approach is typical for certain areas of engineering design. In software development, it tends to be among the less iterative and flexible approaches, as progress flows in largely one direction.
+\justify{\large{The waterfall model provides a structured approach, the model itself progresses linearly through discrete, easily understandable and explainable phases and thus is easy to understand. It also provides easily identifiable milestones in the development process. It is perhaps for this reason that the waterfall model is used as a beginning example of a development model in many software engineering texts and courses. It is argued that the waterfall model can be suited to projects where requirements and scope are fixed, the product itself is firm and stable, and the technology is clearly understood.}}
+
+\chapter{SYSTEM IMPLEMENTATION}\vspace{4pt} 
+
+\section{HARDWARE REQUIREMENTS}
+\justify \large{The minimum hardware requirements for implementing the system are given below:\\
+Processor - Intel I5\\
+Speed- 2 GHz\\
+GPU - Nvidia GeForce GTX 1080\\
+RAM- 8GB\\
+Storage Disk - 1TB\\\\
+The above hardware requirements are not found to be available and feasible on our personal
+systems for our project work. So we used Google Colab, online GPU service provided by google.\\\\
+Features of Google Colab is as follows:\\
+Speed - 2vCPU @ 2.2GHz\\
+GPU - Tesla K80 GPU\\
+RAM - 16GB\\
+Storage Disk - 33GB\\}
+
+\section{SOFTWARE REQUIREMENTS}
+\justify \large{The software requirement for the project are following. Based on the capabilities and ease of
+implementation, the following were chosen.\\
+Operating System - Windows 10, Ubuntu\\
+Programming languages - Python 3\\
+Libraries - Pytorch\\}
+\justify{\large{The implementation of this project is done in three stages. }}
+\section{STAGE 1}
+\subsection{Face detection and recognition module}
+
+\justify{\large{ Face detection and recognition is implemented in Opencv library
+module. OpenCV is an open source computer vision and machine learning software library. OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. OpenCV makes it easy for machine learning developers to utilize and modify the code.The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms.\\
+To do face detection, a Harr Cascade classifier is chosen within opencv library, which interprets facial features such as eyes, nose and mouth as spatial constraints through an algorithm and creates a bounding box for the face as shown in figure 5.1.
+It exploits Haar features[8] which can be defined as the difference of the sum of pixels of areas inside the rectangle, which can be at any position and scale within the original image. This modified feature set is called 2-rectangle feature. The values indicate certain characteristics of a particular area of the image. Each feature type indicates the existence (or absence) of certain characteristics in the image, such as edges or changes in texture. For example, a 2-rectangle feature can indicate where the border lies between a dark region and a light region.}}
+
+
+
+\begin{figure}
+\vspace{5mm} 
+ \centering
+\includegraphics[width=15cm,height=18cm,keepaspectratio]{phase1.png}}\\\\
+\caption{Face detection implementation of the system }\\
+   \end{figure}
+ \section{STAGE 2}
+\subsection{Face Generation module}
+
+\justdulify{\large{ Face generation is implemented using GAN model called StyleGAN2[10] for image to image translation facial images of a person to toonified semi realistic image without loss of facial features of the person as shown in figure 5.2. StyleGAN2 is a state-of-the-art neural network in generating realistic images. Besides, it is explicitly trained to have disentangled directions in latent space, which allows efficient image manipulation by varying latent factors. Editing existing images require embedding a given image into the latent space of StyleGAN2. This neural network that is used here tries to distill a particular image manipulation of StyleGAN2 into image-to-image network trained in paired way[14]. The resulting pipeline is an alternative to existing GANs, trained on unpaired data. However, the model's downside is it's expensive optimisations with many neural networks to get a person’s generated face using the blended StyleGAN model which may take several minutes or even hours.
+}}
+\subsubsection{Residual-Based StyleGAN Encoder}
+\justify{\large{ It is a novel inversion scheme that extends current encoder-based inversion methods such as pixel-style-pixel framework by introducing an iterative refinement mechanism[17]. Instead of directly predicting the latent code of a given real image using a single pass, the encoder is tasked with predicting a residual with respect to the current estimate of the inverted latent code in a self-correcting manner[11].
+The system uses this method to predict the semi realistic image in latent space for the person's image fed into it. It attains improved accuracy compared to current state-of-the-art GAN generation methods with a negligible amount of inference time.
+}}
+\subsubsection{Pixel-Style-Pixel Framework}
+\justify{\large{ The framework is based on a novel encoder network that directly generates a series of style vectors which are fed into a pretrained StyleGAN generator whose weights are from FFHQ blended dataset[13], forming the extended latent space. The encoder directly embeds real images into  different latent space, with no additional optimization. The utilization of this encoder will be directly used to solve image-to-image translation tasks, defining them as encoding problems from some input domain into the latent domain. 
+}}
+   \begin{figure}
+\vspace{5mm} 
+ \centering
+\includegraphics[width=15cm,height=18cm,keepaspectratio]{phase2.png}}\\\\
+\caption{Face generation implementation of the system }\\
+   \end{figure}
+   \section{STAGE 3}
+   \subsection{UV mapping module}
+   \justify{\large{The UV module is implemented using Facemesh libraries as show in figure 5.3. It has a pipeline that consists of two real-time deep neural network models working together: A detector that operates on the full image and computes face locations and, a 3D face landmark model that operates on those locations and predicts the approximate surface geometry via regression. Having the face accurately cropped, drastically reduces the need for common data augmentations like affine transformations consisting of rotations, translation and scale changes[18]. Instead, it allows the network to dedicate most of its capacity towards coordinate prediction accuracy. In addition, the pipeline crops can also be generated based on the face landmarks identified in the previous frame. When the landmark model no longer identify face, presence the face detector is invoked to relocalize the face as shown in figure 5.4.
+   To support complex motions, a representation consisting of a set of learned keypoints along with their local affine transformations[19] is generated to be fed into generator. A generator network also models occlusions arising during target motions and combines the appearance extracted from the source image and the motion derived from the driving video[20].}}
+\begin{figure}
+\vspace{5mm} 
+ \centering
+\includegraphics[width=15cm,height=11cm,keepaspectratio]{mesh.jpg}}\\\\
+\caption{Face meshpoint generation for both actual user and semi realistic image}\\
+   \end{figure}
+   
+\begin{figure}
+\vspace{5mm} 
+ \centering
+\includegraphics[width=15cm,height=18cm,keepaspectratio]{map.jpg}}\\\\
+\caption{UV mapping implementation of the system }\\
+   \end{figure}   
+
+
+\chapter{RESULTS AND ANALYSIS}\vspace{4pt} 
+\justify{\large{Our final prototype was tested using an actual user in a real time, through a video conferencing application using reverse ssh tunneling(refer appendix A) to establish secure tcp connection with Google Colab GPU sever. It turned out to be successful and the result obtained matched the expected output as shown in figure 8.1.The user facial movements are wrapped through UV Mapping in the GUI interface generated by Anaconda prompt(refer appendix B), in real time with negligible latency. The figure 8.2 shows two perspectives in real time, where one is the actual input through web camera and the other camera is the virtual counter part created by this system.}}
+
+\begin{figure}
+\vspace{50mm}
+ \centering
+\includegraphics[width=15cm,height=22cm,keepaspectratio]{imple_ss.png}}\\\\
+\caption{Final implementation of the system through Google meet}\\
+   \end{figure}
+ 
+
+\begin{figure}
+\vspace{15mm}
+ \centering
+\includegraphics[width=15cm,height=25cm,keepaspectratio]{real time.png}}\\\\
+\caption{Real time perspective from both web camera and projection}\\
+   \end{figure}
+   
+\justify{\large{ The system had a stable behaviour throughout the entire process. There is considerably much negligible latency of projection in video output with respect to factors such as network bandwidth and camera resolution. However, a few situations where some slight improvements  such as mapping of other body parts with their mesh points can make this system more robust.}}
+
+
+
+
+\pagebreak
+  
+\chapter{CONCLUSION AND FUTURE WORK}\vspace{4pt} 
+\large{
+In the traditional neural network such as CNN, there is a higher computation requirement to run over these large label maps which are defined during its training of CNN models and hence, can create a latency in video throughout the video conferencing. With the advent of adversarial networks, this requirement of large label maps is not necessary as it could generate same results with small number of label maps.\\
+Generative Adversarial Networks (GAN) are state of the art generative models with capabilities exceeding in both performance and compelling outputs than any of its previous
+counterparts. Since the proposal of GAN in 2014 by Goodfellow, this model has been receiving
+increasing attention from the AI community. The core idea of GANs originates from two-player
+zero-sum game in game theory. A GAN usually comprises a generator and a discriminator,
+which are trained iteratively in an adversarial learning manner, approaching Nash equilibrium.
+As a powerful class of generative models, GANs do not estimate the distribution of data samples explicitly, but learn to generate new samples that conform to the same distribution as
+the real samples.\\ 
+This project is using Image-to-Image Translation with Conditional Adversarial Networks proposed by Phillip Isola}, {Jun-Yan Zhu}, {Tinghui Zhou} and {Alexei A. Efros}[1] in 2018, to generate the facial latent space  for non labeled image data set and reconstructing facial attributes from user in video input into the desired augmentation of a semi realistic facial attributes in real time.\\ 
+}}
+
+\newpage
+
+\setcounter{chapter}{0}
+\chapter*{REFERENCES}
+\markboth{REFERENCES}{REFERENCES}
+\addcontentsline{toc}{chapter}{REFERENCES}
+
+\flushleft{[1] \textbf{Phillip Isola}, \textbf{Jun-Yan Zhu}, \textbf{Tinghui Zhou} and \textbf{Alexei A. Efros}(2018), "\textit{Image-to-Image Translation with Conditional Adversarial Networks}, "Nov 2018, arXiv:1611.07004 Availabe: https://arxiv.org/abs/1611.07004\\}
+
+\flushleft{[2] \textbf{Thierry Bouwmans}, \textbf{Sajid Javed}, \textbf{Maryam Sultana} and \textbf{Soon Ki Jung} (2018) "\textit{Deep Neural Network Concepts for Background Subtraction: A Systematic Review and Comparative Evaluation}, "Dec 2018, 	arXiv:1811.05255. Available: https://arxiv.org/abs/1811.05255 \\}
+
+\flushleft{[3] \textbf{Mohammadreza Babaee}, \textbf{Duc Tung Dinh} and  \textbf{Gerhard Rigoll} (2017) "\textit{A Deep Convolutional Neural Network for Background Subtraction}," Sep 2017, 	arXiv:1702.01731 , Availabe: https://arxiv.org/abs/1702.01731\\}
+
+
+\flushleft{[4] \textbf{Ian J. Goodfellow},\textbf{Jean Pouget-Abadie}, \textbf{Mehdi Mirza}, \textbf{Bing Xu}, \textbf{David Warde-Farley}, \textbf{Sherjil Ozair}, \textbf{Aaron Courville} and  \textbf{Yoshua Bengio} (2014) "\textit{Generative Adversarial Nets}," Jan. 2014, 	arXiv:1406.2661. [Online]. Available:
+https://arxiv.org/abs/1406.2661\\}
+
+
+\flushleft{[5] \textbf{Kede Ma}, \textbf{Huan Fu}, \textbf{Tongliang Liu}, \textbf{Zhou Wang} and \textbf{Dacheng Tao} (2019), "\textit{Deep Blur Mapping: Exploiting High-Level Semantics by Deep Neural Networks}," Dec 2016, arXiv:1612.01227,  Available: https://arxiv.org/abs/1612.01227 \\}
+
+\flushleft{[6] \textbf{J. R. Hou Lee} and \textbf{A. Wong,} "\textit{TimeConvNets: A Deep Time Windowed Convolution Neural Network Design for Real-time Video Facial Expression Recognition}," 2020, pp. 9-16, doi: 10.1109/CRV50864.2020.00010..\\}
+
+\flushleft{[7] \textbf{Y. Zhou}, and \textbf{H. Dong and A. El Saddik}, "\textit{Deep Learning in Next-Frame Prediction: A Benchmark Review}," in IEEE Access, vol. 8, pp. 69273-69283, 2020, doi: 10.1109 /ACCESS.2020.2987281.}\\ }
+
+\flushleft{[8] \textbf{Q. Li}, and \textbf{U. Niaz and B. Merialdo}, "\textit{An improved algorithm on Viola-Jones object detector}," 2012, pp. 1-6, doi: 10.1109 /CBMI.2012.6269796.\\}
+
+\flushleft{[9] \textbf{K. Arulkumaran}, \textbf{M. P. Deisenroth}, \textbf{M. Brundage}, \textbf{A. A. Bharath} (2017), "\textit{‘A brief survey of deep neural network learning}," pp. 1–16, 2018, arXiv:1708.05866. [Online]. Available: https://arxiv.org/abs/1708.05866\\}
+
+\flushleft{[10] \textbf{Tero Karras}, \textbf{Samuli Laine}, textbf{Miika Aittala}, \textbf{Janne Hellsten}, \textbf{Jaakko Lehtinen} and \textbf{Timo Aila}, (2020),"\textit{Analyzing and Improving the Image Quality of StyleGAN} Mar 2020,	arXiv:1912.04958 Available: https://arxiv.org/abs/1912.04958}
+
+\flushleft{[11] \textbf{Elad Richardson}, \textbf{Yuval Alaluf}, \textbf{Or Patashnik}, \textbf{Yotam Nitzan}, \textbf{Yaniv Azar}, \textbf{Stav Shapiro} and  \textbf{Daniel Cohen-Or},(2021) " \textit{Encoding in Style: a StyleGAN Encoder for Image-to-Image Translation} April 2021, arXiv:2008.00951, Available: https://arxiv.org/abs/2008.00951 \\}
+
+\flushleft{[12] \textbf{Omer Tov}, \textbf{Yuval Alaluf}, \textbf{Yotam Nitzan}, \textbf{Or Patashnik} and \textbf{Daniel Cohen-Or} (2021), "\textit{Designing an Encoder for StyleGAN Image Manipulation}," Feb 2021, arXiv:2102.02766, Available: https://arxiv.org/abs/2102.02766\\}
+
+\flushleft{[13] \textbf{Justin N. M. Pinkney} and \textbf{Doron Adler} (2020) "\textit{Resolution Dependent GAN Interpolation for Controllable Image Synthesis Between Domains}," Oct 2020, 	arXiv:2010.05334  Available: https://arxiv.org/abs/2010.05334\\}
+
+\flushleft{[14] \textbf{Yuri Viazovetskyi}, \textbf{Vladimir Ivashkin} and \textbf{ Evgeny Kashin} (2020) "\textit{StyleGAN2 Distillation for Feed-forward Image Manipulation}," Mar 2020, arXiv:2003.03581, Available: https://arxiv.org/abs/2003.03581\\}
+
+\flushleft{[15] \textbf{Y. Shi, Q. Li} and \textbf{X. X. Zhu}, "\textit{Building Footprint Generation Using Improved Generative Adversarial Networks}," in IEEE Geoscience and Remote Sensing Letters, vol. 16, no. 4, pp. 603-607, April 2019, doi: 10.1109/LGRS.2018.2878486.\\}
+
+\flushleft{[16] \textbf{J. Yang}, \textbf{J. Liu} and \textbf{J. Wu}, "\textit{Facial Image Privacy Protection Based on Principal Components of Adversarial Segmented Image Blocks}," in IEEE Access, vol. 8, pp. 103385-103394, 2020, doi: 10.1109/ACCESS.2020.2999449..\\}
+
+
+\flushleft{[17] \textbf{Yuval Alaluf},\textbf{Or Patashnik} and \textbf{Daniel Cohen-Or} (2021)"\textit{ReStyle: A Residual-Based StyleGAN Encoder via Iterative Refinement}," Apr 2021, 	arXiv:2104.02699 Available: https://arxiv.org/abs/2104.02699 \\}
+
+\flushleft{[18] \textbf{Aliaksandr Siarohin},\textbf{Stéphane Lathuilière},\textbf{Sergey Tulyakov}, \textbf{Elisa Ricci} and \textbf{Nicu Sebe} (2020)"\textit{First Order Motion Model for Image Animation}," Oct 2020, arXiv:2003.00196 Available: https://arxiv.org/abs/2003.00196 \\}
+
+\flushleft{[19] \textbf{Patrick Esser}, \textbf{Ekaterina Sutter} and \textbf{Björn Ommer} (2018)"\textit{A Variational U-Net for Conditional Appearance and Shape Generation}," Aug 2018, 	arXiv:1804.04694 Available: https://arxiv.org/abs/1804.04694 \\}
+
+\flushleft{[20] \textbf{Tomas Jakab}, \textbf{Ankush Gupta}, \textbf{Hakan Bilen} and\textbf{Andrea Vedaldi} (2018)"\textit{Unsupervised Learning of Object Landmarks through Conditional Image Generation}," Dec 2018, arXiv:1806.07823 Available: https://arxiv.org/abs/1806.07823 \\}
+ 
+ \flushleft{[21] \textbf{Thalles blog:} {https://sthalles.github.io/intro-to-gans\\}}
+ 
+\setcounter{chapter}{0}
+\chapter*{APPENDIX A}
+\markboth{APPENDIX}{APPENDIX A}
+\addcontentsline{toc}{chapter}{APPENDIX A}
+ \item \textbf{REVERSE SSH TUNNELLING}
+  
+
+\item \justify Reverse SSH tunneling allows you to use an established connection to set up a new connection from your local computer back to the remote server. The original connection is from the remote server to the host, hence using the same connection in the other direction would infer it as reverse tunneling. As SSH is secure, you’re putting a secure connection inside an existing secure connection. This means your connection to the remote computer acts as a private tunnel inside the original connection.Reverse SSH tunneling relies on the remote computer using the established connection to listen for new connection requests from the local computer. The remote computer listens on a network port on the local computer. If it detects an SSH request to that port, it relays that connection request back to itself, down the established connection. This provides a new connection from the local computer to the remote computer.\\\\
+
+
+\chapter*{APPENDIX B}
+\markboth{APPENDIX}{APPENDIX B}
+\addcontentsline{toc}{chapter}{APPENDIX B}
+ \item \textbf{ANACONDA}
+\item\justify  Anaconda is a distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. The distribution includes data-science packages suitable for Windows, Linux, and macOS. Anaconda distribution comes with over 250 packages automatically installed, and over 7,500 additional open-source packages that can be installed from PyPI as well as the conda package and virtual environment manager.
+\end{document}
+
